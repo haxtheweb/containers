@@ -1,0 +1,15 @@
+services:
+  host:
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/Dockerfile
+    ports:
+      - "8000:3000"
+    tty: true 
+  haxdev:
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/Dockerfile.devenv
+    ports:
+      - "8000:3000"
+    tty: true
