@@ -1,0 +1,19 @@
+# Ignore node_modules, git, logs, and other local/development artifacts
+node_modules/
+.git/
+*.log
+Dockerfiles/Dockerfile.devenv
+.vscode/
+.env
+__pycache__/
+*.pyc
+*.swp
+# macOS and OS-specific files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+Thumbs.db
+ehthumbs.db
+Desktop.ini
