@@ -9,6 +9,8 @@ services:
       - "8000:3000"
     tty: true
     container_name: simplehost
+    volumes:
+      - simplehost_data:/data
 
   # Dev environment: for full-featured development
   devenv:
@@ -20,3 +22,9 @@ services:
       - "8001:3000"
     tty: true
     container_name: devenv
+    volumes:
+      - devenv_data:/data
+# Named volumes for persistent data
+volumes:
+  simplehost_data:
+  devenv_data:
