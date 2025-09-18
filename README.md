@@ -1,7 +1,6 @@
+# containers
 
-# hax-docker
-
-Containerization of HAXTheWeb dev environments and deployments
+Containerization of HAXTheWeb dev environments and deployments — containers in hax land
 
 ## Project Overview
 
