@@ -1,15 +1,22 @@
 services:
-  host:
+  # Simple host: for running a single, unmanaged site
+  simplehost:
     build:
       context: .
       dockerfile: ./Dockerfiles/Dockerfile
-    ports:
-      - "8000:3000"
-    tty: true 
-  haxdev:
-    build:
-      context: .
-      dockerfile: ./Dockerfiles/Dockerfile.devenv
+      target: standard
     ports:
       - "8000:3000"
     tty: true
+    # container_name will be added in the next commit
+
+  # Dev environment: for full-featured development
+  devenv:
+    build:
+      context: .
+      dockerfile: ./Dockerfiles/Dockerfile
+      target: dev
+    ports:
+      - "8001:3000"
+    tty: true
+    # container_name will be added in the next commit
