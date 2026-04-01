@@ -1,0 +1,24 @@
+# base stage
+FROM ubuntu:24.04 AS base
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+RUN apt-get update -y && apt-get upgrade -y && \
+	apt-get install -y curl git unzip bzip2 && \
+	apt-get clean && rm -rf /var/lib/apt/lists/*
+
+ENV HOME=/home/ubuntu
+WORKDIR $HOME
+
+# devcontainer-nodejs environment
+FROM base AS devcontainer-nodejs
+USER ubuntu
+RUN curl -fsSL https://fnm.vercel.app/install | bash && \
+	export PATH="$HOME/.local/share/fnm:$PATH" && \
+	eval "$(fnm env --shell bash)" && fnm install --lts --use && npm install -g @haxtheweb/create yarn && \
+	yarn global add symlink-dir @web/test-runner @web/test-runner-commands \
+	@web/test-runner-puppeteer @web/test-runner-playwright lerna web-component-analyzer
+CMD ["/bin/bash"]
+
+# devcontainer-php environment
+FROM base AS devcontainer-php
+USER ubuntu
+CMD ["/bin/bash"]
